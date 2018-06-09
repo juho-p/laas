@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lasku</title>
+<style>
+body {
+  font-family: sans-serif;
+  background-color: white;
+}
+table td {
+  padding-right: 4mm;
+}
+table.border {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0;
+}
+table.border th, table.border td {
+  border: 1px solid;
+  padding: 10px;
+  text-align: left;
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+</style>
+  </head>
+  <body>
+    <h1>Lasku</h1>
+    <table>
+      <tr><td>Myyjän nimi:</td><td><%= @invoice.sender %></td></tr>
+      <tr><td>Myyjän Y-tunnus:</td><td><%= @invoice.sender_ytunnus %></td></tr>
+      <tr><td><br /></td></tr>
+      <tr><td>Ostajan nimi:</td><td><%= @invoice.receiver %></td></tr>
+      <tr><td>Ostajan Y-tunnus:</td><td><%= @invoice.receiver_ytunnus %></td></tr>
+      <tr><td><br /></td></tr>
+      <tr><td>Maksuehto:</td><td>30pv</td></tr>
+      <tr><td>Viivästyskorko:</td><td>7,0%</td></tr>
+      <tr><td>Laskun päiväys:</td><td><%= @invoice.date %></td></tr>
+      <tr><td>Laskun numero:</td><td><%= @invoice.number %></td></tr>
+    </table>
+
+    <hr>
+
+    <p><%= @invoice.work_date_description %></p>
+
+    <table class=border>
+      <tr>
+        <td>Kuvaus</td>
+        <td>Yksikköhinta €</td>
+        <td>Määrä h</td>
+        <td>Hinta yht.</td>
+        <td>ALV %</td>
+        <td>Verollinen hinta yht. €</td>
+      </tr>
+      <tr>
+        <td>Ohjelmistokehitys</td>
+        <td><%= num(@invoice.unit_price) %></td>
+        <td><%= num(@invoice.amount) %></td>
+        <td><%= num(@invoice.total) %></td>
+        <td><%= num(@invoice.vat_pct) %></td>
+        <td><%= num(@invoice.total_with_vat) %></td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <td>Veroton hinta yhteensä €:</td>
+        <td><%= num(@invoice.total) %></td>
+      </tr>
+      <tr>
+        <td>Arvonlisävero yhteensä €:</td>
+        <td><%= num(@invoice.total_vat) %></td>
+      </tr>
+      <tr>
+        <td>Maksettava yhteensä €:</td>
+        <td><%= num(@invoice.total_with_vat) %></td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <table class=border>
+      <tr>
+        <td>Saajan tilinumero: <%= @invoice.account_number %></td>
+        <td>BIC: <%= @invoice.account_bic %></td>
+      </tr>
+      <tr>
+        <td rowspan=2>Saajan nimi ja osoite:
+          <br><%= @invoice.sender %>
+          <br><%= @invoice.address %>
+        </td>
+        <td>
+          Maksettava yhteensä €: <%= num(@invoice.total_with_vat) %>
+        </td>
+      </tr>
+      <tr>
+        <td>Viitenumero: <%= @invoice.reference_number %></td>
+      </tr>
+  </body>
+</html>

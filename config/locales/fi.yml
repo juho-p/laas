@@ -1,0 +1,50 @@
+fi:
+  new_invoice: Luo lasku
+  save_form: Tallenna lomake
+  download_pdf: Lataa PDF
+  work_month: Työ suoritettu %{month} %{year}
+  form_error: Korjaa virheelliset tiedot lomakkeessa
+  form_saved: Kopioi selaimesi URL talteen käyttääksesi lomaketta uudelleen
+  support:
+    array:
+      two_words_connector: ' ja '
+      last_word_connector: ' ja '
+  activemodel:
+    errors:
+      messages:
+        blank: ei saa olla tyhjä
+        not_a_number: ei ole numero
+    attributes:
+      invoice:
+        sender: lähettäjä
+        sender_ytunnus: lähettäjän Y-tunnus
+        address: lähettäjän osoite
+        receiver: vastaanottaja
+        receiver_ytunnus: vastaanottajan Y-tunnus
+        number: laskun numero
+        work_month: työ suoritettu
+        account_number: tilinumero
+        account_bic: bic
+        unit_price: tuntihinta
+        amount: määrä
+  simple_form:
+    yes: 'Kyllä'
+    no: 'Ei'
+    required:
+      text: 'Pakollinen tieto'
+      mark: '*'
+    options:
+      invoice:
+        work_month:
+          "1": tammikuussa
+          "2": helmikuussa
+          "3": maaliskuussa
+          "4": huhtikuussa
+          "5": toukokuussa
+          "6": kesäkuussa
+          "7": heinäkuussa
+          "8": elokuussa
+          "9": syyskuussa
+          "10": lokakuussa
+          "11": marraskuussa
+          "12": joulukuussa

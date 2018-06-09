@@ -1,0 +1,28 @@
+<h2><%= t 'new_invoice' %></h2>
+
+<%= simple_form_for @invoice, method: :post, url: invoice_submit_url do |f| %>
+  <%= f.input :sender %>
+  <%= f.input :sender_ytunnus %>
+  <%= f.input :address %>
+  <%= f.input :receiver %>
+  <%= f.input :receiver_ytunnus %>
+  <%= f.input :number %>
+
+  <%= f.input :work_month, collection: 12.times.map{|i| i.next.to_s.to_sym } %>
+
+  <%# TODO: support for more than 1 row %>
+  <%= f.input :unit_price %>
+  <%= f.input :amount %>
+
+  <%= f.input :account_number %>
+  <%= f.input :account_bic %>
+
+  <div>
+    <%= f.button :button, value: 'save', class: 'btn btn-default' do %>
+      <%= t 'save_form' %>
+    <% end %>
+    <%= f.button :button, value: 'download', class: 'btn btn-success' do %>
+      <%= t 'download_pdf' %>
+    <% end %>
+  </div>
+<% end %>
