@@ -1,0 +1,12 @@
+#!/usr/bin/ruby
+
+require 'laas'
+
+cmd = ARGV[0]
+
+case cmd
+when 'invoice' then new_invoice ARGV[1]
+when 'project' then new_project ARGV[1]
+when 'init' then first_init
+else puts 'Please provide valid command'
+end

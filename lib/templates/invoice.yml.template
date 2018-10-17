@@ -1,0 +1,17 @@
+sender: Mycompany
+sender_ytunnus: 1234567-8
+address:
+    - Mystreet 123
+    - 12345 Tampere
+city: Tampere
+receiver: Myclient
+receiver_ytunnus: 1234567-8
+number: 1
+unit_price: 100
+amount: 100
+account_number: xxx
+account_bic: xxx
+work_date_description: January 2018
+invoice_overrides:
+    - :amount
+    - :work_date_description

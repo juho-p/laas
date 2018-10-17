@@ -1,11 +1,14 @@
-# LAAS
+Tool for creating Finnish invoices
 
-Simple Finnish invoice document generator Rails app.
+### Installation
 
-### System dependencies
+    gem build *.gemspec
+    gem install *.gem
 
-`wkhtmltopdf` must be installed in the server
+### Usage
 
-### Licensing
-
-MIT-license, see LICENSE.txt
+    mkdir invoicing && cd invoicing
+    lcli init
+    # edit invoice.yml.template and invoice.html.erb files as needed
+    lcli project my-new-project
+    lcli invoice my-new-project

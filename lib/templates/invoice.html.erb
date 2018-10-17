@@ -31,22 +31,24 @@ hr {
   </head>
   <body>
     <h1>Lasku</h1>
+
     <table>
-      <tr><td>Myyjän nimi:</td><td><%= @invoice.sender %></td></tr>
-      <tr><td>Myyjän Y-tunnus:</td><td><%= @invoice.sender_ytunnus %></td></tr>
+      <tr><td>Myyjän nimi:</td><td><%= sender %></td></tr>
+      <tr><td>Myyjän Y-tunnus:</td><td><%= sender_ytunnus %></td></tr>
+      <tr><td><% address.each do |a| %><%= a %><br><% end %></td></tr>
       <tr><td><br /></td></tr>
-      <tr><td>Ostajan nimi:</td><td><%= @invoice.receiver %></td></tr>
-      <tr><td>Ostajan Y-tunnus:</td><td><%= @invoice.receiver_ytunnus %></td></tr>
+      <tr><td>Ostajan nimi:</td><td><%= receiver %></td></tr>
+      <tr><td>Ostajan Y-tunnus:</td><td><%= receiver_ytunnus %></td></tr>
       <tr><td><br /></td></tr>
       <tr><td>Maksuehto:</td><td>30pv</td></tr>
       <tr><td>Viivästyskorko:</td><td>7,0%</td></tr>
-      <tr><td>Laskun päiväys:</td><td><%= @invoice.date %></td></tr>
-      <tr><td>Laskun numero:</td><td><%= @invoice.number %></td></tr>
+      <tr><td>Laskun päiväys:</td><td><%= date %></td></tr>
+      <tr><td>Laskun numero:</td><td><%= number %></td></tr>
     </table>
 
     <hr>
 
-    <p><%= @invoice.work_date_description %></p>
+    <p>Työ suoritettu <%= work_date_description %></p>
 
     <table class=border>
       <tr>
@@ -59,47 +61,52 @@ hr {
       </tr>
       <tr>
         <td>Ohjelmistokehitys</td>
-        <td><%= num(@invoice.unit_price) %></td>
-        <td><%= num(@invoice.amount) %></td>
-        <td><%= num(@invoice.total) %></td>
-        <td><%= num(@invoice.vat_pct) %></td>
-        <td><%= num(@invoice.total_with_vat) %></td>
+        <td><%= num(unit_price) %></td>
+        <td><%= num(amount) %></td>
+        <td><%= num(total) %></td>
+        <td><%= num(vat_pct) %></td>
+        <td><%= num(total_with_vat) %></td>
       </tr>
     </table>
 
     <table>
       <tr>
         <td>Veroton hinta yhteensä €:</td>
-        <td><%= num(@invoice.total) %></td>
+        <td><%= num(total) %></td>
       </tr>
       <tr>
         <td>Arvonlisävero yhteensä €:</td>
-        <td><%= num(@invoice.total_vat) %></td>
+        <td><%= num(total_vat) %></td>
       </tr>
       <tr>
         <td>Maksettava yhteensä €:</td>
-        <td><%= num(@invoice.total_with_vat) %></td>
+        <td><%= num(total_with_vat) %></td>
       </tr>
     </table>
 
     <hr>
 
+    <div>
+      <%= sender %><br>
+      Y-tunnus: <%= sender_ytunnus %><br>
+      Kotipaikka: <%= city %><br>
+      alv.rek<br>
+    </div>
+
     <table class=border>
       <tr>
-        <td>Saajan tilinumero: <%= @invoice.account_number %></td>
-        <td>BIC: <%= @invoice.account_bic %></td>
+        <td>Saajan tilinumero: <%= account_number %></td>
+        <td>BIC: <%= account_bic %></td>
       </tr>
       <tr>
-        <td rowspan=2>Saajan nimi ja osoite:
-          <br><%= @invoice.sender %>
-          <br><%= @invoice.address %>
-        </td>
+        <td>Saaja: <%= sender %></td>
         <td>
-          Maksettava yhteensä €: <%= num(@invoice.total_with_vat) %>
+          Maksettava yhteensä €: <%= num(total_with_vat) %>
         </td>
       </tr>
       <tr>
-        <td>Viitenumero: <%= @invoice.reference_number %></td>
+        <td>Maksaja: <%= receiver %></td>
+        <td>Viitenumero: <%= reference_number %></td>
       </tr>
   </body>
 </html>
