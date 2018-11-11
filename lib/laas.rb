@@ -150,7 +150,7 @@ def set_number!(opts)
 end
 
 def new_file_base(dir)
-  base = "#{Date.today.year}#{Date.today.month.to_s.rjust(2, '0')}"
+  base = "#{dir}/#{Date.today.year}#{Date.today.month.to_s.rjust(2, '0')}"
   (0..1000).lazy
     .map { |i| "#{base}-#{i}" }
     .find { |x| Dir[x+'*'].empty? }
@@ -166,7 +166,7 @@ def new_invoice(project)
   dir = File.join(project, 'invoices')
   FileUtils.mkdir_p dir
   basename = new_file_base(dir)
-  file = ->(ext) { File.join(dir, basename + ext) }
+  file = ->(ext) { File.join(basename + ext) }
   write = ->(ext, c) { File.write file[ext], c }
   
   write.call('.html', html)
@@ -175,3 +175,4 @@ def new_invoice(project)
 
   puts `wkhtmltopdf #{file['.html']} #{file['.pdf']}` rescue puts('wkhtmltopdf failed')
 end
+
